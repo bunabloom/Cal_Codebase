@@ -16,6 +16,11 @@ class ViewController: UIViewController {
         
         
     }
+    override func loadView() {
+        super.loadView()
+        subView = SubView(frame: self.view.frame)
+        self.view = subView
+    }
 
 
 }
