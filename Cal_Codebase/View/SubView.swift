@@ -16,9 +16,7 @@ class SubView: UIView {
         makeLayout(VStackView, self)
     }
     
-    required init(coder: NSCoder) {
-        fatalError("init(coder:) has not been imolemented")
-    }
+    required init(coder: NSCoder) { fatalError("init(coder:) has not been imolemented") }
     
     let numberLabel = {
         let label = UILabel()
@@ -42,7 +40,6 @@ class SubView: UIView {
                 x.backgroundColor = UIColor(red: 58/255, green: 58/255, blue: 58/255, alpha: 1.0)
             }
             else { x.backgroundColor = .orange}
-//            x.addTarget(self, action: #selector(buttonPressed), for: .touchDown)
             return x
         }
     }()
@@ -63,17 +60,16 @@ class SubView: UIView {
     let VStackView = {
         let x = UIStackView()
         x.axis = .vertical
-        x.backgroundColor = .purple
+        x.backgroundColor = .black
         x.spacing = 10
         x.distribution = .fillEqually
         return x
     }()
     
     func makeNumLabel(_ label: UILabel, _ view: UIView) {
-        view.addSubview(label)
-        label.snp.makeConstraints{
+        view.addSubview(label); label.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(30)
-            $0.trailing.equalToSuperview().offset(30)
+            $0.trailing.equalToSuperview().inset(30)
             $0.top.equalToSuperview().offset(200)
             $0.width.equalTo(200)
             $0.height.equalTo(100)
@@ -87,8 +83,7 @@ class SubView: UIView {
     }
     
     func makeLayout(_ V: UIStackView, _ view: UIView) {
-        view.addSubview(V)
-        V.snp.makeConstraints{
+        view.addSubview(V); V.snp.makeConstraints{
             $0.width.equalTo(350)
             $0.height.equalTo(350)
             $0.top.equalToSuperview().offset(400)

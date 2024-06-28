@@ -61,16 +61,10 @@ class ViewController: UIViewController {
             if Int(buttonTitle) != nil  { tempStr.append(buttonTitle) }
             else {
                 if let lastCharacter = tempStr.last, !lastCharacter.isNumber { tempStr.removeLast() }
-                tempStr.append(buttonTitle)
-            }
-        }
-        sendToLabel()
-        
-    }
-    @objc private func reset() {
-        tempStr = ""
-        subView.numberLabel.text? = "0"
-    }
+                tempStr.append(buttonTitle) }
+        }; sendToLabel() }
+    
+    @objc private func reset() { tempStr = ""; subView.numberLabel.text? = "0" }
     
     @objc private func sol() {
         if let lastCharacter = tempStr.last, !lastCharacter.isNumber { tempStr.removeLast() }
