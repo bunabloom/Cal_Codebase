@@ -42,6 +42,7 @@ class SubView: UIView {
                 x.backgroundColor = UIColor(red: 58/255, green: 58/255, blue: 58/255, alpha: 1.0)
             }
             else { x.backgroundColor = .orange}
+//            x.addTarget(self, action: #selector(buttonPressed), for: .touchDown)
             return x
         }
     }()
@@ -73,6 +74,7 @@ class SubView: UIView {
         label.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(30)
             $0.trailing.equalToSuperview().offset(30)
+            $0.top.equalToSuperview().offset(200)
             $0.width.equalTo(200)
             $0.height.equalTo(100)
         }
