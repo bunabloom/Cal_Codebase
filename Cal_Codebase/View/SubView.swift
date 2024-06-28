@@ -11,8 +11,9 @@ class SubView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        
+        makeNumLabel(numberLabel, self)
+        makeButtons(VStackView, HStackView, buttons)
+        makeLayout(VStackView, self)
     }
     
     required init(coder: NSCoder) {
@@ -37,6 +38,10 @@ class SubView: UIView {
             x.frame.size.height = 80
             x.frame.size.width = 80
             x.layer.cornerRadius = x.frame.size.width / 2
+            if Int(x.currentTitle!) != nil {
+                x.backgroundColor = UIColor(red: 58/255, green: 58/255, blue: 58/255, alpha: 1.0)
+            }
+            else { x.backgroundColor = .orange}
             return x
         }
     }()
@@ -73,12 +78,19 @@ class SubView: UIView {
         }
     }
     
-    func makeButtons(_ V: UIStackView, _ H: UIStackView, _ btns: [UIButton]) {
-        
-        for btn in btns {
-            if Int(btn.currentTitle!) != nil {
-                btn.backgroundColor = UIColor(red: 58/255, green: 58/255, blue: 58/255, alpha: 1.0)
-            }
+    
+    func makeButtons(_ V: UIStackView, _ H: [UIStackView], _ btns: [UIButton]) {
+        for i in 0...15 { let hsi = i / 4; H[hsi].addArrangedSubview(btns[i]) }
+        for i in 0..<4 { V.addArrangedSubview(H[i]) }
+    }
+    
+    func makeLayout(_ V: UIStackView, _ view: UIView) {
+        view.addSubview(V)
+        V.snp.makeConstraints{
+            $0.width.equalTo(350)
+            $0.height.equalTo(350)
+            $0.top.equalToSuperview().offset(400)
+            $0.centerX.equalToSuperview()
         }
         
     }
